@@ -1,0 +1,11 @@
+<?php
+/**
+ * Interface para aplicação do Padrão Factory
+ * @author Arilson Gonçalves da Rosa
+ *
+ */
+interface factory {
+
+public static function getInstance ($ClassName=null,$parametros=null,$path=null);	
+}
+?>

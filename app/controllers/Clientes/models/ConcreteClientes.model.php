@@ -1,0 +1,31 @@
+<?php
+/**
+ * Model do Controller Clientes
+ * O objetivo desta classe é conectar O Controller com o seu Modelo de Abstração
+ * Que por sua vez conectará o Controller com a base de dados (Vide Classe Database)
+ * @author Linea Comunicação com Design - http://www.lineacom.com.br
+ *
+ */
+class ConcreteClientes
+{	
+	public function cadastrar($data){
+		if(isset($data['id'])){
+			return TableFactory::getInstance("Cliente")->update($data);
+		}else{
+			return TableFactory::getInstance("Cliente")->insert($data);
+		}
+	}
+	
+	public function getCliente($data){
+		return TableFactory::getInstance("Cliente")->getCliente($data['id']);
+	}
+	
+	public function remove($data){
+		return TableFactory::getInstance("Cliente")->remove($data['id']);
+	}
+	
+	public function getClientes(){
+		return TableFactory::getInstance("Cliente")->getAll();
+	}
+}
+?>

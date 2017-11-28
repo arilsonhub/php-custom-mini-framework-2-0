@@ -1,0 +1,1 @@
+//Coloque suas funções genéricas de javascript neste arquivo

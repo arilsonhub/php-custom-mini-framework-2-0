@@ -1,0 +1,24 @@
+<?php
+Abstract class ModelDelegator implements Businessdelegator {
+	
+	/**
+	 * Delega Tarefas para um Determinado Model	 
+	 * @param String $ClassName
+	 * @param Array $parametros - Posicao 0 -> Nome do Controller(Obrigatório) 1 -> Ação(Obrigatório) 2 -> Parâmetros(Opcional)
+	 */
+	public static function delegate($ClassName=null,$parametros=null){
+		  //Valida os parâmetros - evitando erros de indexação pois a posicao 2 não é obrigatória
+		  if(!isset($parametros[2])){ $parametros[2] = null; } 
+	      //Fabrica o Model
+	      $Model = ModelFactory::getInstance($ClassName,$parametros,null);
+	      
+	      //Verifica se o Model foi Fabricado com Sucesso
+	      if($Model != False){	      
+		      //Delega a ação que o Model deve Executar e Retornar
+		      return $Model->$parametros[1]($parametros[2]);
+	      }else{
+              //Problema ao fabricar o Model, então retornamos falso	      	
+	      }	  return false;
+	}	
+}
+?>
